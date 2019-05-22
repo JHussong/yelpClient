@@ -1,0 +1,48 @@
+<div>
+  <div>
+    <h1>Food Finder</h1>
+  </div>
+
+  <form [formGroup]="foodForm" (submit)="onSubmit()">
+    <label>City</label>
+    <input placeholder="enter a city"formControlName="city" type="text" required>
+
+    <label>State</label>
+    <input placeholder="enter a state" formControlName="state" type="text" required>
+
+    <label>Price</label>
+    <select formControlName="priceInfo" required>
+      <option value=1>$</option>
+      <option value=2>$$</option>
+      <option value=3>$$$</option>
+      <option value=4>$$$$</option>
+    </select>
+
+    <button type="submit">Get Food</button>
+
+  </form>
+</div>
+
+<div class="UserResult">
+  <div *ngIf="FoodData">
+      <div>
+        <img src="{{FoodData.image_url}}">
+      </div>
+      <h3>{{FoodData.name}}</h3>
+      <h6>{{FoodData.location.display_address}}</h6>
+      <h6>{{FoodData.display_phone}}</h6>
+      <h6>
+          <img *ngIf="FoodData.rating === 0" src="../../assets/regular/regular_0.png">
+          <img *ngIf="FoodData.rating === 1" src="../../assets/regular/regular_1.png">
+          <img *ngIf="FoodData.rating === 1.5" src="../../assets/regular/regular_1_half.png">
+          <img *ngIf="FoodData.rating === 2" src="../../assets/regular/regular_2.png">
+          <img *ngIf="FoodData.rating === 2.5" src="../../assets/regular/regular_2_half.png">
+          <img *ngIf="FoodData.rating === 3" src="../../assets/regular/regular_3.png">
+          <img *ngIf="FoodData.rating === 3.5" src="../../assets/regular/regular_3_half.png">
+          <img *ngIf="FoodData.rating === 4" src="../../assets/regular/regular_4.png">
+          <img *ngIf="FoodData.rating === 4.5" src="../../assets/regular/regular_4_half.png">
+          <img *ngIf="FoodData.rating === 5" src="../../assets/regular/regular_5.png">
+      </h6>
+      <h6>{{FoodData.transactions}}</h6>
+  </div>
+</div>
